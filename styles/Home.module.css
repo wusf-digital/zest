@@ -1,31 +1,20 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.container__page {
+  padding-block-start: 7rem;
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
 }
 
 .title a {
@@ -40,6 +29,7 @@
 }
 
 .title {
+  color: #3A7168;
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
@@ -65,19 +55,50 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
+.gridFeatured {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  margin-block-start: 4rem;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.latestEpisode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.latestEpisode .title {
+  font-size: 3rem;
+  color: #F26522;
+}
+
+.latestEpisode .title:hover {
+  color: #3A7168;
+}
+
+.underwriting {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 4rem;
+  max-width: 100%;
+}
+
 .grid {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 100%;
+  margin-block: 4rem;
 }
 
 .card {
+  background-color: white;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
-  color: inherit;
+  color: #F26522;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
@@ -88,8 +109,8 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #3A7168;
+  border-color: #3A7168;
 }
 
 .card h2 {
@@ -103,15 +124,39 @@
   line-height: 1.5;
 }
 
+.episodes {
+  border-block-start: 2px solid #3A7168;
+  padding-block-end: 0;
+  color: #F26522;
+  background-color: #D4F4ED;
+}
+
+.episodes > h2 {
+  color: #3A7168;
+  font-size: 3rem;
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.publishedDate {
+  color: black;
+  margin: 1rem;
+  font-size: 0.5rem;
+}
+
 .logo {
   height: 1em;
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@media (min-width: 992px) {
+  .container {
+    padding: 0 4rem;
+  }
+
+  .gridFeatured {
+    grid-template: 1fr / 2fr 1fr;
+    margin-block-start: 4rem;
   }
 }
 
@@ -120,10 +165,13 @@
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
+  
 }
