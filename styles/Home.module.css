@@ -35,6 +35,11 @@
   font-size: 4rem;
 }
 
+.titleSection {
+  flex-basis: 100%;
+  font-size: 3rem;
+}
+
 .title,
 .description {
   text-align: center;
@@ -85,14 +90,6 @@
   max-width: 100%;
 }
 
-.grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 100%;
-  margin-block: 4rem;
-}
-
 .card {
   background-color: white;
   margin: 1rem;
@@ -131,7 +128,7 @@
   background-color: #D4F4ED;
 }
 
-.episodes > h2 {
+.episodes h1 {
   color: #3A7168;
   font-size: 3rem;
   flex-basis: 100%;
@@ -149,9 +146,38 @@
   margin-left: 0.5rem;
 }
 
+.grid {
+  margin-block: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #D4F4ED;
+  justify-content: space-evenly;
+  border-block-start: 2px solid #3A7168;
+}
+
+.gridSection {
+  background-color: rgba(0, 0, 0, 0);
+  border-block-start: 0;
+}
+
+.grid h1 {
+  color: #3A7168;
+  font-size: 3rem;
+  flex-basis: 100%;
+  text-align: center
+}
+
+.grid .card {
+  flex: 1;
+  min-width: 300px;
+  min-height: 200px;
+  margin-inline: 0;
+  margin-block: 20px;
+}
+
 @media (min-width: 992px) {
   .container {
-    padding: 0 4rem;
+    padding: 6rem 4rem;
   }
 
   .gridFeatured {
@@ -173,5 +199,5 @@
   .logo img {
     filter: invert(1);
   }
-  
+
 }

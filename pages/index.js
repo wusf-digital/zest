@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import moment from 'moment'
 
+import Episodes from '../components/Episodes'
+import Recipes from '../components/Recipes'
 import styles from '../styles/Home.module.css'
 
-export default function Home({ episodes }) {
+export default function Home({ episodes, recipes }) {
 
   return (
     <>
@@ -35,7 +36,6 @@ export default function Home({ episodes }) {
             />
           </Link>
           <iframe
-            
             src="https://embed.podcasts.apple.com/us/podcast/the-zest/id1458162352?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=auto"
             height="450px"
             frameBorder="0"
@@ -52,32 +52,25 @@ export default function Home({ episodes }) {
             height={160}
           />
         </aside>
-        <section className={`${styles.grid} ${styles.episodes}`}>
-          <h2>Latest Episodes</h2>
-          {episodes.map(episode => (
-              <Link 
-                  key={episode.id}
-                  className={styles.card}
-                  href="/episodes/[id]" 
-                  as={`/episodes/${episode.slug}`}
-              >
-                  <h2>{episode.title}</h2>
-                  <p className={styles.publishedDate}>{moment(episode.publishedDate).format('MMMM D, YYYY')}</p>
-              </Link>
-          ))}
-        </section>
+        <Episodes episodes={episodes} />
+        <Recipes recipes={recipes} />
       </div>
     </>
   )
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=6`)
-  const episodes = await res.json()
+  const [ episodesRes, recipesRes ] = await Promise.all([
+    fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=6'),
+    fetch('https://thezestpodcast.com/wp-json/wp/v2/posts?categories=4&per_page=6&_embed')
+  ])
+  const [ episodes, recipes ] = await Promise.all([
+    episodesRes.json(), recipesRes.json()
+  ])
 
   return {
       props: {
-          episodes
+          episodes, recipes
       }
   }
 }

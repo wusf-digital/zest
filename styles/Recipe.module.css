@@ -1,0 +1,18 @@
+.recipe {
+    display: grid;
+    gap: 2rem;
+}
+
+.recipeRemoveParagraphs > p {
+    display: none;
+}
+
+.recipeRemoveSvg svg {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    .recipe {
+        grid-template: 100% / 1fr 1fr;
+    } 
+}

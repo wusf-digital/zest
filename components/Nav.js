@@ -64,7 +64,7 @@ export default function Nav() {
                             <ul className={styles.navLinks}>
                                 <li><Link href="/" onClick={toggleNav}>Home</Link></li>
                                 <li><Link href="/episodes" onClick={toggleNav}>Episodes</Link></li>
-                                <li>Recipes</li>
+                                <li><Link href="/recipes" onClick={toggleNav}>Recipes</Link></li>
                                 <li>More</li>
                             </ul>
                         </li>

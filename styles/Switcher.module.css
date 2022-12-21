@@ -1,0 +1,13 @@
+.switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-inline-start: 0;
+    list-style-type: none;
+    margin-block: 0rem;
+    width: 100%;
+}
+
+.switcher li {
+    margin-inline: 1rem;
+}
