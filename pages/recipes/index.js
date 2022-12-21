@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Head from "next/head"
 
 import Starters from "../../components/Recipes/starters"
 import Entrees from "../../components/Recipes/entrees"
@@ -8,6 +8,8 @@ import Favorites from "../../components/Recipes/favorites"
 
 export default function Recipes({ starters, entrees, desserts, favorites }) {
     return (
+        <>
+        <Head><title>Recipes - The Zest Podcast</title></Head>
         <section className={`${styles.container__page} ${styles.container}`}>
             <h1 className={styles.title}>Recipes</h1>
             <Starters starters={starters} />
@@ -15,6 +17,7 @@ export default function Recipes({ starters, entrees, desserts, favorites }) {
             <Desserts desserts={desserts} />
             <Favorites favorites={favorites} />
         </section>
+        </>
     )
 }
 

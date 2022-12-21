@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 
 import stylesRecipes from '../../styles/Recipe.module.css'
@@ -17,21 +18,24 @@ export default function Recipe({ recipe }) {
         `
     }, [])
 
+    const title = recipe.title.rendered
+
     return (
         <>
-        <article className={`${stylesRecipes.recipe}`}>
-            <div style={{ position: "relative", width: "100%", height: "100vh"}}>
-            <Image 
-                src={recipe._embedded['wp:featuredmedia']['0'].source_url} 
-                fill
-                alt="Episode Image" />
-            </div>
-            <div
-            className={`${stylesRecipes.recipeRemoveParagraphs} ${stylesRecipes.recipeRemoveSvg} ${stylesRecipes.recipeTest}`} 
-            style={{ paddingTop: '7rem', paddingRight: '1rem'}} 
-            dangerouslySetInnerHTML={{__html: recipe.content.rendered}} />
-            
-        </article>
+            <Head><title>{`${title} - The Zest Podcast`}</title></Head>
+            <article className={`${stylesRecipes.recipe}`}>
+                <div style={{ position: "relative", width: "100%", height: "100vh"}}>
+                <Image 
+                    src={recipe._embedded['wp:featuredmedia']['0'].source_url} 
+                    fill
+                    alt="Episode Image" />
+                </div>
+                <div
+                className={`${stylesRecipes.recipeRemoveParagraphs} ${stylesRecipes.recipeRemoveSvg} ${stylesRecipes.recipeTest}`} 
+                style={{ paddingTop: '7rem', paddingRight: '1rem'}} 
+                dangerouslySetInnerHTML={{__html: recipe.content.rendered}} />
+                
+            </article>
         </>
     )
 }

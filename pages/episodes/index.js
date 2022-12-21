@@ -8,7 +8,7 @@ import styles from '../../styles/Home.module.css'
 export default function Episodes({ episodes, meta }) {
     return (
         <>
-            <Head>Episodes - The Zest Podcast</Head>
+            <Head><title>Episodes - The Zest Podcast</title></Head>
             <section className={`${styles.container__page} ${styles.container}`}>
                 <h1 className={styles.title}>Episodes</h1>
                 <div className={`${styles.grid} ${styles.gridSection}`}>

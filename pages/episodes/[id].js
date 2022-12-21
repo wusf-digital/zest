@@ -1,20 +1,26 @@
-import styles from '../../styles/Home.module.css'
+import Head from 'next/head'
 import Image from 'next/image'
 
+import styles from '../../styles/Home.module.css'
+
 export default function Episode({ episodeInfo }) {
+    const title = episodeInfo.title
     return (
-        <article className={`${styles.container__page} ${styles.container}`}>
-            <h1 className={styles.title}>{episodeInfo.title}</h1>
-            <div style={{ position: "relative", width: "50%", height: "1", paddingBottom: "50%", left: "50%", transform: "translateX(-50%)" }}>
-                <Image 
-                    src={episodeInfo.episodeImageUrl ?? episodeInfo.podcastImageUrl} 
-                    fill
-                    alt="Episode Image" />
-            </div>
-            <p className={styles.description}>{episodeInfo.description}</p>
-            <audio style={{display: "block", margin: "auto"}} controls src={episodeInfo.audioUrl}></audio>
-            <p dangerouslySetInnerHTML={{__html: episodeInfo.descriptionLong}} />
-        </article>
+        <>
+            <Head><title>{`${title} - The Zest Podcast`}</title></Head>
+                <article className={`${styles.container__page} ${styles.container}`}>
+                    <h1 className={styles.title}>{episodeInfo.title}</h1>
+                    <div style={{ position: "relative", width: "50%", height: "1", paddingBottom: "50%", left: "50%", transform: "translateX(-50%)" }}>
+                        <Image 
+                            src={episodeInfo.episodeImageUrl ?? episodeInfo.podcastImageUrl} 
+                            fill
+                            alt="Episode Image" />
+                    </div>
+                    <p className={styles.description}>{episodeInfo.description}</p>
+                    <audio style={{display: "block", margin: "auto"}} controls src={episodeInfo.audioUrl}></audio>
+                    <p dangerouslySetInnerHTML={{__html: episodeInfo.descriptionLong}} />
+                </article>
+        </>
     )
 }
 
