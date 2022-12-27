@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import moment from 'moment'
 
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export default function Recipes({ recipes }) {
     return (

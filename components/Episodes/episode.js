@@ -10,8 +10,8 @@ export default function Episode({ episode }) {
             className={styles.card}
             href="/episodes/[id]" 
             as={`/episodes/${episode.slug}`}>
-            <h2>{episode.title} &rarr;</h2>
-            <p style={{margin: '1rem'}}>{moment(episode.publishedDate).format('MMMM D, YYYY')}</p>
+            <h2>{episode.title}</h2>
+            <p>{moment(episode.publishedDate).format('MMMM D, YYYY')}</p>
         </Link>
     )
 }
