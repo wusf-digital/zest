@@ -8,7 +8,7 @@ export default function Episode({ episode }) {
         <Link 
             key={episode.id}
             className={styles.card}
-            href="/episodes/[id]" 
+            href="/episodes/[slug]" 
             as={`/episodes/${episode.slug}`}>
             <h2>{episode.title}</h2>
             <p>{moment(episode.publishedDate).format('MMMM D, YYYY')}</p>
