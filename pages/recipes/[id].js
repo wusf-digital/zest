@@ -23,16 +23,15 @@ export default function Recipe({ recipe }) {
     return (
         <>
             <Head><title>{`${title} - The Zest Podcast`}</title></Head>
-            <article className={`${stylesRecipes.recipe}`}>
-                <div style={{ position: "relative", width: "100%", height: "100vh"}}>
-                <Image 
-                    src={recipe._embedded['wp:featuredmedia']['0'].source_url} 
-                    fill
-                    alt="Episode Image" />
+            <article className={stylesRecipes.recipe}>
+                <div className={stylesRecipes.recipeImage}>
+                    <Image 
+                        src={recipe._embedded['wp:featuredmedia']['0'].source_url} 
+                        fill
+                        alt="Episode Image" />
                 </div>
                 <div
-                className={`${stylesRecipes.recipeRemoveParagraphs} ${stylesRecipes.recipeRemoveSvg} ${stylesRecipes.recipeTest}`} 
-                style={{ paddingTop: '7rem', paddingRight: '1rem'}} 
+                className={`${stylesRecipes.recipeRemoveParagraphs} ${stylesRecipes.recipeRemoveSvg} ${stylesRecipes.recipeContent}`} 
                 dangerouslySetInnerHTML={{__html: recipe.content.rendered}} />
                 
             </article>

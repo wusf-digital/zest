@@ -3,12 +3,23 @@
     gap: 2rem;
 }
 
+.recipeContent {
+    padding-block-start: 7rem;
+    padding-inline-end: 1rem;
+}
+
 .recipeRemoveParagraphs > p {
     display: none;
 }
 
 .recipeRemoveSvg svg {
     display: none;
+}
+
+.recipeImage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
 @media screen and (min-width: 992px) {
