@@ -4,22 +4,35 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import stylesEpisode from '../../styles/Episode.module.css'
 
-export async function getAllEpisodes() {
-    const perPage = 100
+async function getEpisodeCount() {
+    try {
+        const resMeta = await fetch('https://api-dev.wusf.digital/simplecast/podcast?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0')
+        const meta = await resMeta.json()
+        const { count } = meta
+        console.log(count)
+        return count
+    } catch (err) {
+        console.log(err)
+    }
+}
 
-    const resMeta = await fetch('https://api-dev.wusf.digital/simplecast/podcast?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0')
-    const meta = await resMeta.json()
-    const { count } = meta
+async function getAllEpisodes() {
+    const count = await getEpisodeCount()
+    const perPage = 100
 
     const urls = []
 
     for (let i = 0; i < Math.ceil(count / perPage); i++) {
-        urls.push(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${perPage}&offset=${i * perPage}`)
+        urls.push(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${perPage}&offset=${i*perPage}`)
     }
 
     const allEpisodes = await Promise.all(urls.map(async url => {
-        const res = await fetch(url)
-        return res.json()
+        try {
+            const res = await fetch(url)
+            return res.json()
+        } catch(err) {
+            console.log(err)
+        }
     }))
 
     return allEpisodes.flat()
@@ -57,21 +70,21 @@ export async function getStaticPaths() {
         }
     }))
     
-    return { paths, fallback: 'blocking' }
+    return { paths: [], fallback: 'blocking' }
 }
 
 export async function getStaticProps({ params }) {
     const allEpisodes = await getAllEpisodes()
-
     const episode = allEpisodes.find(episode => episode.slug === params.slug)
-
+    
     let episodeInfo = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episode.id}`)
     episodeInfo = await episodeInfo.json()
+    
 
     return {
         props: {
             episodeInfo
         },
-        revalidate: 10,
+        revalidate: 60,
     }
 }
