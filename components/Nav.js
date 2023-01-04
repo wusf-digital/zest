@@ -72,19 +72,19 @@ export default function Nav() {
                             <ul className={`${styles.navLinksSocial}`}>
                                 <li>
                                     <a href="https://www.facebook.com/TheZestPodcast/" 
-                                        target={'_blank'} onClick={toggleNav}>
+                                        target={'_blank'} onClick={toggleNav} rel='noreferrer'>
                                         <FontAwesomeIcon icon={faFacebookF} />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.instagram.com/thezestpodcast/" 
-                                        target={'_blank'} onClick={toggleNav}>
+                                        target={'_blank'} onClick={toggleNav} rel='noreferrer'>
                                         <FontAwesomeIcon icon={faInstagram} />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.tiktok.com/@thezestpodcast" 
-                                        target={'_blank'} onClick={toggleNav}>
+                                        target={'_blank'} onClick={toggleNav} rel='noreferrer'>
                                         <FontAwesomeIcon icon={faTiktok} />
                                     </a>
                                 </li>
