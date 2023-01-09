@@ -65,7 +65,27 @@ export default function Nav() {
                                 <li><Link href="/" onClick={toggleNav}>Home</Link></li>
                                 <li><Link href="/episodes" onClick={toggleNav}>Episodes</Link></li>
                                 <li><Link href="/recipes" onClick={toggleNav}>Recipes</Link></li>
-                                <li>More</li>
+                                <li className={`${styles.dropdown}`}>
+                                    <a>More</a>
+                                    <ul className={styles.dropdownMenu}>
+                                        <li className={styles.dropdownSubmenuItem}>
+                                            <Link href="/how-to-listen" onClick={toggleNav}>
+                                                How To Listen To A Podcast
+                                            </Link>
+                                        </li>
+                                        <li className={styles.dropdownSubmenuItem}>
+                                            <Link href="/about" onClick={toggleNav}>
+                                                About Us
+                                            </Link>
+                                        </li>
+                                        <li className={styles.dropdownSubmenuItem}>
+                                            <a href="https://wusf.secureallegiance.com/wusf/WebModule/Donate.aspx?P=ZESTFM&PAGETYPE=PLG&CHECK=fIIyvDzDNtlOQgkZuGyCqhiCxtaFReuS"
+                                                target={'_blank'} onClick={toggleNav} rel='noreferrer'>
+                                                Donate To The Zest
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li>

@@ -45,6 +45,47 @@
     z-index: 2;
 }
 
+.link {
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    text-transform: inherit;
+    color: inherit;
+    padding: 0;
+}
+
+.link:hover {
+    color: #3A7168;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    padding: 1rem;
+    border-radius: .25rem;
+    list-style-type: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    width: 12rem;
+}
+
+.dropdown:hover .dropdownMenu {
+    display: block;
+}
+
+.dropdownSubmenuItem {
+    margin: 1rem 0;
+}
+
 .xMarkNone {
     display: none;
 }
